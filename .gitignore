@@ -20,6 +20,12 @@ wheels/
 .installed.cfg
 *.egg
 
+# Test coverage
+.coverage
+htmlcov/
+.tox/
+.nox/
+
 # Virtual Environment
 .env
 .venv
