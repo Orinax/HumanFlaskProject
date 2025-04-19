@@ -11,10 +11,17 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
+    db = get_db()
+    # Check if any users exist in the database
+    existing_user = db.execute('SELECT COUNT(*) as count FROM user').fetchone()['count']
+    if existing_user > 0:
+        # If any user exists, redirect to index
+        flash('Registraion is closed.')
+        return redirect(url_for('index'))
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        db = get_db()
         error = None
 
         if not username:
