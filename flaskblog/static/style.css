@@ -134,3 +134,9 @@ input[type=submit] {
     max-width: 100px;
     min-width: 10em;
 }
+
+.ql-container {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;  /* Optional: adds rounded corners */
+    margin: 10px 0;     /* Optional: adds some spacing */
+}
