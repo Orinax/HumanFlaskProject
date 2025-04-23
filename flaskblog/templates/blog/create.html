@@ -5,11 +5,25 @@
 {% endblock %}
 
 {% block content %}
-  <form method="post">
-    <label for="title">Title</label>
-    <input name="title" id="title" value="{{ request.form['title'] }}" required>
-    <label for="body">Body</label>
-    <textarea name="body" id="body">{{ request.form['body'] }}</textarea>
-    <input type="submit" value="Save">
-  </form>
+
+        <form method="post">
+            <label for="title">Title</label>
+            <input name="title" id="title" value="{{ request.form['title'] }}" required>
+            <label for="body">Body</label>
+
+            <!-- Editor container -->
+            <div id="editor"></div>
+                <input type="hidden" name="body" id="body">
+                <input type="submit" value="Save">
+
+                <script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+
+                <!-- Initialize Quill editor -->
+                <script>
+                  document.addEventListener('DOMContentLoaded', function() {
+                      const quill = initializeQuillEditor('#editor', 'form');
+                  });
+                </script>
+        </form>
+
 {% endblock %}
