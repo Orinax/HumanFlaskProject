@@ -15,14 +15,13 @@
     <article class="post">
       <header>
         <div>
-          <h1>{{ post['title'] }}</h1>
+            <h1><a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a></h1>
           <div class="about">by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}</div>
         </div>
         {% if g.user['id'] == post['author_id'] %}
           <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
         {% endif %}
       </header>
-{#      <p class="body">{{ post['body'] | safe }}</p>#}
         <div class="post-content-{{ post["id"] }}" style="min-height: 100px;">
             {{ post['body'] | safe }}
         </div>
@@ -36,15 +35,24 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize each post content as a read-only Quill instance
         {% for post in posts %}
-          new Quill('.post-content-{{ post["id"] }}', {
-              modules: {
-                  toolbar: false,
-                  checklist: {enabled: true}
-              },
-              theme: 'snow',
-              readOnly: true
-          });
-          {% endfor %}
+            new Quill('.post-content-{{ post["id"] }}', {
+                modules: {
+                    toolbar: false,
+                    checklist: {enabled: true}
+                },
+                theme: 'snow',
+                readOnly: true
+            });
+
+            // Get all links in this post and set them to open in same tab
+            const postContent = document.querySelector('.post-content-{{ post["id"] }}');
+            const links = postContent.querySelectorAll('a');
+            links.forEach(link => {
+                link.removeAttribute('target');
+                link.setAttribute('target', '_self');
+            });
+
+        {% endfor %}
     });
     </script>
 {% endblock %}
