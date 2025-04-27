@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
@@ -7,6 +8,71 @@ from flaskblog.db import get_db
 
 bp = Blueprint('blog', __name__)
 
+
+def truncate_html(html_content, post_id, max_length=500, min_length=200):
+    """
+    Truncates HTML content while preserving basic formatting
+    """
+    if not html_content:
+        return ""
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    paragraphs = soup.find_all('p')
+
+    # Find a good breaking point
+    if not paragraphs:
+        return html_content
+
+    # Create a new div with the ql-editor class to maintain Quill formatting
+    new_div = soup.new_tag('div')
+    new_div['class'] = 'ql-editor'
+
+    # Create an empty paragraph for spacting
+    empty_para = soup.new_tag('p')
+    empty_para.string = '\n'
+    
+    # Create the link inside an italics tag
+    link_para = soup.new_tag('p')
+    italics = soup.new_tag('em')
+    continue_reading_link = soup.new_tag('a')
+    continue_reading_link['href'] = url_for('blog.detail_view', id=post_id)
+    continue_reading_link.string = 'Continue reading...'
+    italics.append(continue_reading_link)
+    link_para.append(italics)
+
+    # Check the length of the first paragraph
+    first_para = paragraphs[0].get_text()
+    
+    if len(first_para) > min_length:
+        # If first paragraph is long, only show that one
+        first_para = paragraphs[0]
+        if len(paragraphs) > 1:
+            new_div.append(first_para)
+            new_div.append(empty_para)
+            new_div.append(link_para)
+        else:
+            new_div.append(first_para)
+    else:
+        current_length = 0
+        for i, para in enumerate(paragraphs):
+            para_text = para.get_text()
+            if current_length + len(para_text) > max_length:
+                new_div.append(empty_para)
+                new_div.append(link_para)
+                break
+            new_div.append(para)
+            current_length += len(para_text)
+
+            if i == len(paragraphs) - 1:
+                break
+
+            if current_length < len(''.join(p.get_text() for p in paragraphs)) and i == len(paragraphs) - 1:
+                new_div.append(empty_para)
+                new_div.append(link_para)
+
+    return str(new_div)
+
+
 @bp.route('/')
 def index():
     db = get_db()
@@ -15,7 +81,16 @@ def index():
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
-    return render_template('blog/index.html', posts=posts)
+    
+    # Convert posts to list of dictionaries and truncate the body
+    posts_preview = []
+    for post in posts:
+        post_dict = dict(post)
+        post_dict['body'] = truncate_html(post['body'], post['id'])
+        posts_preview.append(post_dict)
+
+    
+    return render_template('blog/index.html', posts=posts_preview)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -59,6 +134,12 @@ def get_post(id, check_author=True):
         abort(403)
 
     return post
+
+
+@bp.route('/<int:id>', methods=('GET',))
+def detail_view(id):
+    post = get_post(id, check_author=False);
+    return render_template('blog/detail.html', post=post)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
