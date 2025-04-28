@@ -74,12 +74,22 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
 
 
 @bp.route('/')
-def index():
+@bp.route('/page/<int:page>')
+def index(page=1):
     db = get_db()
+    per_page = 5
+    offset = (page - 1) * per_page
+
+    # First get the total number of posts for pagination
+    total_posts = db.execute('SELECT COUNT(*) FROM post').fetchone()[0]
+    total_pages = (total_posts + per_page - 1) // per_page
+
+    # Get posts for current page
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
+        ' ORDER BY created DESC LIMIT ? OFFSET ?',
+        (per_page, offset)
     ).fetchall()
     
     # Convert posts to list of dictionaries and truncate the body
@@ -90,7 +100,8 @@ def index():
         posts_preview.append(post_dict)
 
     
-    return render_template('blog/index.html', posts=posts_preview)
+    return render_template('blog/index.html', posts=posts_preview,
+                           page=page, total_pages=total_pages,)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
