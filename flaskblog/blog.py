@@ -6,7 +6,7 @@ from werkzeug.exceptions import abort
 from flaskblog.auth import login_required
 from flaskblog.db import get_db
 
-bp = Blueprint('blog', __name__)
+bp = Blueprint('blog', __name__, url_prefix='/blog' )
 
 
 def truncate_html(html_content, post_id, max_length=500, min_length=200):
