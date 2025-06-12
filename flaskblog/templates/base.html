@@ -31,7 +31,7 @@
     </a>
     <img src="{{ url_for('static', filename='images/chauncey.jpg') }}" style="width:45%;" class="w3-round"><br><br>
     <h4><b>Chauncey Pelton</b></h4>
-    <p class="w3-text-grey">Template by W3.CSS</p>
+    <p class="w3-text-grey">Software Developer</p>
   </div>
   <div class="w3-bar-block">
       <a href="{{ url_for('home.homepage') }}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Portfolio</a> 
@@ -80,6 +80,71 @@
             {% block content %}{% endblock %}
         </section>
 {#    </div>#}
+
+
+  <!-- Footer -->
+  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+      <h3>ABOUT THIS BLOG</h3>
+      <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
+      <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
+    </div>
+  
+    <div class="w3-third">
+      <h3>RECENT POSTS</h3>
+      <ul class="w3-ul">
+        {% for post in recent_posts %} 
+        <li class="w3-padding-16">
+          <div class="w3-col w3-left-align" style="width:40px"> 
+            <img src="{{ url_for('static', filename='images/post_icon.png') }}" class="w3-left w3-margin-right" style="width:50px">
+          </div>
+          <div class="w3-rest w3-container">
+            <span class="w3-large"><a href="{{ url_for('blog.detail_view', id=post['id']) }}" class="w3-text-white">{{ post['title'] }}</a><br></span>
+            <span class="w3-small w3-text-white">{{ post['created'] }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="w3-third">
+      <h3>POPULAR TAGS</h3>
+      <p>
+        <span class="w3-tag w3-black w3-margin-bottom">These</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Tags</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Don't</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Work</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Yet</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">But</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Hopefully</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">They</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Will</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Some</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Day</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">We'll see...</span>
+      </p>
+    </div>
+
+  </div>
+  </footer>
+
+  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a> | Template by <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryw3css_templates_portfolio&stacked=h" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.schools</a></div>
+
+<!-- End page content -->
+</div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+
 </div>
 {#</body>#}
+
+
+
+
 </html>

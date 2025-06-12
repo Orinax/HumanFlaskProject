@@ -40,6 +40,25 @@ def create_app(test_config=None):
     from . import blog
     app.register_blueprint(blog.bp)
 
+
+    @app.context_processor
+    def inject_recent_posts():
+        db_conn = db.get_db()
+        raw_posts = db_conn.execute(
+            'SELECT id, title, created FROM post ORDER BY created DESC LIMIT 2'
+        ).fetchall()
+
+        formatted_posts = []
+        for post in raw_posts:
+            date_str = post['created'].strftime('%Y-%m-%d')
+            formatted_posts.append({
+                'id': post['id'],
+                'title': post['title'],
+                'created': date_str
+            })
+
+        return dict(recent_posts=formatted_posts)
+
     return app
 
 
