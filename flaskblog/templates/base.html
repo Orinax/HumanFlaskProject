@@ -33,6 +33,7 @@
 {#<body>#}
 
 <!-- Sidebar/menu -->
+<!--
 <nav><br>
   <div>
     <img src="{{ url_for('static', filename='images/chauncey.jpg') }}" style="width:45%;" class="w3-round"><br><br>
@@ -47,6 +48,7 @@
     <a href="https://www.linkedin.com/in/chauncey-pelton/" target="_blank">LinkedIn</a>
   </div>
 </nav>
+-->
 
 <!-- !PAGE CONTENT! -->
 <div>
@@ -54,10 +56,21 @@
 
   <!-- Header -->
   <header id="portfolio">
-    <a href="#"><img src="{{ url_for('static', filename='images/chauncey_cropped.jpg') }}" style="width:65px;"></a>
+  <!--  <a href="#"><img src="{{ url_for('static', filename='images/chauncey_cropped.jpg') }}" style="width:65px;"></a> -->
+      <div>
+          <h1><b>Senior Junior</b></h1>
+          <nav>
+              <ul>
+                  <li><a href="{{ url_for('home.homepage') }}">Portfolio</a></li>
+                  <li><a href="{{ url_for('home.homepage') }}#about">About</a></li>
+                  <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+              </ul>
+          </nav>
+
+      </div>
+
     <span> </span>
     <div>
-    <h1><b>Senior Junior</b></h1>
     <div>
     </div>
     </div>
