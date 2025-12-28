@@ -1,17 +1,26 @@
+/* Define variables for colors */
+:root {
+  --base: #04040C;
+  --contrast: #646464;
+  --primary: #05C605;
+  --accent: #EA9217;
+  --midtone: #BFBFBF;
+}
+
 body {
     max-width: 960px;
     margin: 0 auto;
-    background: white;
+    background-color: var(--base);
 }
 
 h1 {
     font-family: serif;
-    color: #377ba8;
+    color: var(--primary);
     margin: 1rem 0;
 }
 
 a {
-    color: #377ba8;
+    color: var(--primary);
 }
 
 hr {
@@ -21,7 +30,7 @@ hr {
 
 nav {
     width: 100%; 
-    background: lightgray;
+    background: var(--base);
     display: flex;
     align-items: center;
     padding: 0 0.5rem;
@@ -55,6 +64,12 @@ header .action {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+}
+
+footer {
+  background-color: var(--base);
+  color: var(--primary);
+  padding: 1em;
 }
 
 .action-new {
@@ -106,7 +121,7 @@ header .action {
 }
 
 .post .about {
-    color: slategray;
+    color: var(--primary);
     font-style: italic;
 }
 
