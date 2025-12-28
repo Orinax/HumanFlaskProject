@@ -13,36 +13,38 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- For Bootstrapcdn
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+-->
     <!-- Include stylesheet for Quill.js -->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
+<!-- Old style thing that I don't know what it's for...
     <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </style>
-    <body class="w3-light-grey w3-content" style="max-width:1600px">
+-->
+    <body>
 </head>
 
 {#<body>#}
 
 <!-- Sidebar/menu -->
-<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-  <div class="w3-container">
-    <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-      <i class="fa fa-remove"></i>
-    </a>
+<nav><br>
+  <div>
     <img src="{{ url_for('static', filename='images/chauncey.jpg') }}" style="width:45%;" class="w3-round"><br><br>
     <h4><b>Chauncey Pelton</b></h4>
-    <p class="w3-text-grey">Software Developer</p>
+    <p>Software Developer</p>
   </div>
-  <div class="w3-bar-block">
-      <a href="{{ url_for('home.homepage') }}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>Portfolio</a> 
-      <a href="{{ url_for('home.homepage') }}#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>About</a> 
-    <a href="{{ url_for('blog.index') }}" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-file fa-fw w3-margin-right"></i>Blog</a>
-    <a href="https://github.com/orinax" target="_blank" class="w3-bar-item w3-button w3-padding"><i class="fa fa-github fa-fw w3-margin-right"></i>GitHub</a>
-    <a href="https://www.linkedin.com/in/chauncey-pelton/" target="_blank" class="w3-bar-item w3-button w3-padding"><i class="fa fa-linkedin fa-fw w3-margin-right"></i>LinkedIn</a>
+  <div>
+    <a href="{{ url_for('home.homepage') }}">Portfolio</a> 
+    <a href="{{ url_for('home.homepage') }}#about">About</a> 
+    <a href="{{ url_for('blog.index') }}">Blog</a>
+    <a href="https://github.com/orinax" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/chauncey-pelton/" target="_blank">LinkedIn</a>
   </div>
 </nav>
 
@@ -87,7 +89,7 @@
 
 
   <!-- Footer -->
-  <footer class="w3-container w3-padding-32 w3-dark-grey">
+  <footer class="main-content p-lg">
   <div class="w3-row-padding">
     <div class="w3-third">
       <h3>ABOUT THIS BLOG</h3>
