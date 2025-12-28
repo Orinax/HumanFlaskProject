@@ -65,7 +65,6 @@
 
 
 
-{#    <div class="container">#}
         <section class="content">
             <header>
                 {% block header %}{% endblock %}
@@ -75,53 +74,52 @@
             {% endfor %}
             {% block content %}{% endblock %}
         </section>
-{#    </div>#}
 
 
   <!-- Footer -->
-  <footer class="main-content p-lg">
-  <div class="w3-row-padding">
-    <div class="w3-third">
+  <footer>
+  <div>
+    <div>
       <h3>ABOUT THIS BLOG</h3>
       <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
       <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
     </div>
   
-    <div class="w3-third">
+    <div>
       <h3>RECENT POSTS</h3>
-      <ul class="w3-ul">
+      <ul>
         {% for post in recent_posts %} 
-        <li class="w3-padding-16">
-          <div class="w3-col w3-left-align" style="width:40px"> 
-            <img src="{{ url_for('static', filename='images/post_icon.png') }}" class="w3-left w3-margin-right" style="width:50px">
+        <li>
+          <div style="width:40px"> 
+            <img src="{{ url_for('static', filename='images/post_icon.png') }}" style="width:50px">
           </div>
-          <div class="w3-rest w3-container">
-            <span class="w3-large"><a href="{{ url_for('blog.detail_view', id=post['id']) }}" class="w3-text-white">{{ post['title'] }}</a><br></span>
-            <span class="w3-small w3-text-white">{{ post['created'] }}</span>
+          <div>
+            <span><a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a><br></span>
+            <span>{{ post['created'] }}</span>
           </div>
         </li>
         {% endfor %}
       </ul>
     </div>
 
-    <div class="w3-third">
+    <div>
       <h3>POPULAR TAGS</h3>
       <p>
-        <span class="w3-tag w3-black w3-margin-bottom">These</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Tags</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Don't</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Work</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Yet</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">But</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Hopefully</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">They</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Will</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Some</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Day</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">We'll see...</span>
+        <span>These</span> <span>Tags</span> <span>Don't</span>
+        <span>Work</span> <span>Yet</span> <span>But</span>
+        <span>Hopefully</span> <span>They</span> <span>Will</span>
+        <span>Some</span> <span>Day</span> <span>We'll see...</span>
       </p>
     </div>
 
   </div>
   </footer>
 
-  <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a> | Template by <a href="https://www.w3schools.com/howto/tryit.asp?filename=tryw3css_templates_portfolio&stacked=h" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.schools</a></div>
 
 <!-- End page content -->
 </div>
 
+<!-- Get rid of the sidebar?
 <script>
 // Script to open and close sidebar
 function w3_open() {
@@ -134,6 +132,7 @@ function w3_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 </script>
+-->
 
 </body>
 
