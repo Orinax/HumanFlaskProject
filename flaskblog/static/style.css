@@ -28,17 +28,6 @@ hr {
     border-top: 1px solid lightgray;
 }
 
-nav {
-    width: 100%; 
-    background: var(--base);
-    border-bottom-color: var(--midtone);
-    border-bottom-style: solid;
-    border-bottom-width: 6px;
-    display: flex;
-    align-items: center;
-    padding: 1em;
-}
-
 nav h1 {
     flex: auto;
     margin: 0;
@@ -56,8 +45,26 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a,
+nav ul li {
+    margin: 0 1em;
+}
+
+nav ul li a {
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    
+}
+
 nav ul li span,
+
+header {
+    background: var(--base);
+    border-bottom-color: var(--contrast);
+    border-bottom-style: solid;
+    border-bottom-width: 6px;
+}
 
 header .action {
     display: block;
@@ -70,9 +77,22 @@ header .action {
 }
 
 footer {
-  background-color: var(--base);
-  color: var(--primary);
-  padding: 1em;
+    background-color: var(--base);
+    color: var(--primary);
+    padding: 1em;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.flex-container h1,
+.flex-container nav ul li a {
+    font-size: 1.5rem;
+    font-family: Arial, sans-serif;
 }
 
 .action-new {
