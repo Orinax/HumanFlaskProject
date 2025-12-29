@@ -250,21 +250,33 @@ input[type=submit] {
 
 .projects {
     display: grid; /* This puts the cards in a grid, but doesn't make the images the same size. */
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
     gap: 1.5em;
     padding: 2em;
 }
 
+.card {
+    /*border: 2px solid;
+    border-radius: 8px;
+    overflow: hidden;
+    border-color: var(--primary);*/
+    border-bottom: 5px solid;
+    border-color: var(--primary);
+    text-align: left;
+    padding: 1em;
+}
+
 .card img {
     width: 100%;
+    border-bottom: 5px solid;
 }
 
 .card h3 {
     margin: 0.5em 0;
-    font-size: 1.25rem;
+    font-size: 1.50rem;
 }
 
 .card p {
-    font-size: 1rem;
+    font-size: 1.25rem;
     font-family: var(--font-choice);
 }
