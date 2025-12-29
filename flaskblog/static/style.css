@@ -14,8 +14,8 @@ body {
     background-color: var(--base);
 }
 
-h1 {
-    font-family: serif;
+h1, h3 {
+    font-family: var(--font-choice);
     color: var(--primary);
     margin: 1rem 0;
 }
@@ -25,7 +25,7 @@ a {
 }
 
 p {
-    font-family: Arial, sans-serif;
+    font-family: var(font-choice);
     color: var(--primary);
 }
 
@@ -98,7 +98,7 @@ footer {
 .flex-container h1,
 .flex-container nav ul li a {
     font-size: 1.5rem;
-    font-family: Arial, sans-serif;
+    font-family: var(--font-choice);
 }
 
 .action-new {
@@ -262,7 +262,6 @@ input[type=submit] {
 .card h3 {
     margin: 0.5em 0;
     font-size: 1.25rem;
-    font-family: var(--font-choice);
 }
 
 .card p {
