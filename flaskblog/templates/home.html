@@ -3,29 +3,23 @@
 
 {% block content %}
   <!-- First Photo Grid-->
-  <div>
-    <div>
-        <img src="{{ url_for('static', filename='images/clr.png') }}" alt="Trains" style="width:100%">
-      <div>
-          <p><b><a href="https://github.com/Orinax/CommandLineRail" target="_blank">Command Line Rail</a></b></p>
-        <p>An idle command line game that allows players to watch trains travel and transport people on the command line.</p>
-      </div>
-    </div>
-    <div>
-        <img src="{{ url_for('static', filename='images/snake.png') }}" alt="Snake" style="width:100%">
-      <div>
-          <p><b><a href="https://github.com/Orinax/Snake-Game-using-Python-Curses" target="_blank">Snake</a></b></p>
-        <p>A version of the classic Snake game, written with Python and Curses. Not my own design, but when I came across it on GitHub it was broken. I was able to get it into a working state.</p>
-      </div>
-    </div>
-    <div>
-        <img src="{{ url_for('static', filename='images/flasklogo.jpg') }}" alt="Flask Logo" style="width:100%">
-      <div>
-          <p><b><a href="https://github.com/Orinax/HumanFlaskProject" target="_blank">Flask Web Blog & Portfolio</a></b></p>
-        <p>Instead of using a premade website maker I used Flask to put this site together. It showcases my learning journey and my personal projects.</p>
-      </div>
-    </div>
-  </div>
+    <section class="projects">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/clr.png') }}" alt="Trains" style="width:100%">
+            <h3><b><a href="https://github.com/Orinax/CommandLineRail" target="_blank">Command Line Rail</a></b></h3>
+            <p>An idle command line game that allows players to watch trains travel and transport people on the command line.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/snake.png') }}" alt="Snake" style="width:100%">
+            <h3><b><a href="https://github.com/Orinax/Snake-Game-using-Python-Curses" target="_blank">Snake</a></b></h3>
+            <p>A version of the classic Snake game, written with Python and Curses. Not my own design, but when I came across it on GitHub it was broken. I was able to get it into a working state.</p>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/flasklogo.jpg') }}" alt="Flask Logo" style="width:100%">
+            <h3><b><a href="https://github.com/Orinax/HumanFlaskProject" target="_blank">Flask Web Blog & Portfolio</a></b></h3>
+            <p>Instead of using a premade website maker I used Flask to put this site together. It showcases my learning journey and my personal projects.</p>
+        </div>
+    <section>
   
   <!-- Second Photo Grid-->
   <div>
