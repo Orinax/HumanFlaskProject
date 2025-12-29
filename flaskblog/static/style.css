@@ -65,13 +65,6 @@ nav ul li a:hover {
 
 nav ul li span,
 
-header {
-    background: var(--base);
-    border-bottom-color: var(--contrast);
-    border-bottom-style: solid;
-    border-bottom-width: 6px;
-}
-
 header .action {
     display: block;
     /*padding: 0.5rem;*/
@@ -86,6 +79,13 @@ footer {
     background-color: var(--base);
     color: var(--primary);
     padding: 1em;
+}
+
+.site-header {
+    background: var(--base);
+    border-bottom-color: var(--primary);
+    border-bottom-style: solid;
+    border-bottom-width: 6px;
 }
 
 .flex-container {
@@ -114,17 +114,6 @@ footer {
 
 .content {
     padding: 0 1rem 1rem;
-}
-
-.content > header {
-    border-bottom: 1px solid lightgray;
-    display: flex;
-    align-items: flex-end;
-}
-
-.content > header h1 {
-    flex: auto;
-    margin: 1rem 0 0.25rem 0;
 }
 
 .flash {
