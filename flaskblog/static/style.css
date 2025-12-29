@@ -250,7 +250,7 @@ input[type=submit] {
 
 .projects {
     display: grid; /* This puts the cards in a grid, but doesn't make the images the same size. */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1.5em;
     padding: 2em;
 }
