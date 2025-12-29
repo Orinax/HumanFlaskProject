@@ -82,6 +82,9 @@ footer {
 }
 
 .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     background: var(--base);
     border-bottom-color: var(--primary);
     border-bottom-style: solid;
