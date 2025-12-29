@@ -23,6 +23,11 @@ a {
     color: var(--primary);
 }
 
+p {
+    font-family: Arial, sans-serif;
+    color: var(--primary);
+}
+
 hr {
     border: none;
     border-top: 1px solid lightgray;
@@ -242,3 +247,13 @@ input[type=submit] {
     padding: 0;
 }
 
+.projects {
+    display: grid; /* This puts the cards in a grid, but doesn't make the images the same size. */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5em;
+    padding: 2em;
+}
+
+.card {
+
+}
