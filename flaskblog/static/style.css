@@ -1,10 +1,11 @@
 /* Define variables for colors */
 :root {
-  --base: #04040C;
-  --contrast: #646464;
-  --primary: #05C605;
-  --accent: #EA9217;
-  --midtone: #BFBFBF;
+    --base: #04040C;
+    --contrast: #646464;
+    --primary: #05C605;
+    --accent: #EA9217;
+    --midtone: #BFBFBF;
+    --font-choice: Arial, sans-serif;
 }
 
 body {
@@ -254,6 +255,17 @@ input[type=submit] {
     padding: 2em;
 }
 
-.card {
+.card img {
+    width: 100%;
+}
 
+.card h3 {
+    margin: 0.5em 0;
+    font-size: 1.25rem;
+    font-family: var(--font-choice);
+}
+
+.card p {
+    font-size: 1rem;
+    font-family: var(--font-choice);
 }
