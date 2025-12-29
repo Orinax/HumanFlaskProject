@@ -81,31 +81,26 @@
 
 
   <!-- Footer -->
-  <footer>
-  <div>
-    <div>
-      <h3>ABOUT THIS BLOG</h3>
-      <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
-      <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
-    </div>
-  
-    <div>
-      <h3>RECENT POSTS</h3>
-      <ul>
-        {% for post in recent_posts %} 
-        <li>
-          <div style="width:40px"> 
-            <img src="{{ url_for('static', filename='images/post_icon.png') }}" style="width:50px">
+  <footer class="footer">
+      <div class="footer-content">
+          <div class="about">
+              <h3>ABOUT THIS BLOG</h3>
+              <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
+              <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
           </div>
-          <div>
-            <span><a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a><br></span>
-            <span>{{ post['created'] }}</span>
+          <div class="recent-posts">
+              <h3>RECENT POSTS</h3>
+              <div class="post-link-preview">
+                  {% for post in recent_posts %} 
+                  <article class="post-link">
+
+                      <a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a><br>
+                      <p>{{ post['created'] }}</span></p>
+                  </article>
+                  {% endfor %}
+              </div>
           </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
+      </div>
   </footer>
 
 

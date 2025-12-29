@@ -272,3 +272,46 @@ input[type=submit] {
     font-size: 1.25rem;
     font-family: var(--font-choice);
 }
+
+/* Styling for the footer */
+.footer {
+
+}
+
+.footer-content {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.about {
+    flex: 0;
+    min-width: 300px;
+}
+
+.recent-posts {
+    flex: 1;
+    min-width: 250px;
+}
+
+.about p {
+    font-size: 1rem;
+    font-family: var(--font-choice);
+    line-height: 1.6;
+}
+
+.recent-posts .post-link-preview {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+
+.recent-posts .post-link {
+    font-size: 1rem;
+    font-family: var(--font-choice);
+    padding: 1em;
+    flex: 1;
+    max-width: 300px;
+    text-align: left;
+}
