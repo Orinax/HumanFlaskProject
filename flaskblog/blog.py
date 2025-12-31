@@ -77,7 +77,7 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
 @bp.route('/page/<int:page>')
 def index(page=1):
     db = get_db()
-    per_page = 5
+    per_page = 1
     offset = (page - 1) * per_page
 
     # First get the total number of posts for pagination
@@ -96,7 +96,7 @@ def index(page=1):
     posts_preview = []
     for post in posts:
         post_dict = dict(post)
-        post_dict['body'] = truncate_html(post['body'], post['id'])
+        # post_dict['body'] = truncate_html(post['body'], post['id'])
         posts_preview.append(post_dict)
 
     
