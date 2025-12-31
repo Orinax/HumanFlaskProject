@@ -122,8 +122,6 @@ footer {
 .flash {
     margin: 1em 0;
     padding: 1em;
-    background: #cae6f6;
-    border: 1px solid #377ba8;
 }
 
 .post > header {
@@ -148,6 +146,14 @@ footer {
 
 .post .body {
     white-space: pre-line;
+}
+
+.by-line {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-style: italic;
+    font-family: var(--font-choice);
+    margin-top: 0.25rem;
 }
 
 .content:last-child {
@@ -187,12 +193,6 @@ input[type=submit] {
     align-self: start;
     max-width: 100px;
     min-width: 10em;
-}
-
-.ql-container {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border-radius: 10px;  /* Optional: adds rounded corners */
-    margin: 10px 0;     /* Optional: adds some spacing */
 }
 
 .pagination {
