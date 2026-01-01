@@ -1,30 +1,14 @@
 {% extends 'base.html' %}
 
-{% block header %}
-
-<nav class="nav-blog-container">
-    <div class="nav-blog-header-list">
-        <ul class="nav-blog-list">
-             {% if g.user %}
-                 <li><span>{{ g.user['username'] }}</span></li>
-                 <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-             {% endif %}
-        </ul>
-    </div>
-</nav>
-
-
-{% endblock %}
-
 {% block content %}
     <div>
         {% if g.user %}
             <a class="action-new" href="{{ url_for('blog.create') }}">New</a>
         {% endif %}
     </div>
-  
-  <!-- Add Quill JS -->
-  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+ 
+    <!-- Add Quill JS -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
     {% for post in posts %}
         <article class="post">
