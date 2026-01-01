@@ -147,7 +147,7 @@ footer {
     margin-top: 0.25rem;
 }
 
-.post .body {
+.post-content {
     white-space: normal;
     font-family: var(--font-choice);
     font-size: 1.50rem;

@@ -40,12 +40,11 @@
           <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
         {% endif %}
       </header>
-      <div class="post-content-{{ post["id"] }}" style="min-height: 100px;">
+      <div class="post-content post-content-{{ post["id"] }}">
             {{ post['body'] | safe }}
         </div>
     </article>
     {% if not loop.last %}
-      <hr>
     {% endif %}
   {% endfor %}
 
