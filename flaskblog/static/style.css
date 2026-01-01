@@ -49,16 +49,17 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 nav ul li {
-    margin: 0 1em;
+    margin: 0 0.5em;
 }
 
 nav ul li a {
     font-weight: bold;
     margin: 5px;
-    padding: 0.3em;
+    padding: 0.3rem;
 }
 
 nav ul li a:hover {
@@ -67,7 +68,37 @@ nav ul li a:hover {
     text-decoration: none;
 }
 
-nav ul li span,
+.menu-toggle {
+    display: none;
+    background: var(--base);
+    color: var(--primary);
+    font-family: var(--font-choice);
+}
+
+@media (max-width: 1200px) {
+    .navbar-items {
+        display: none;
+        flex-direction: column;
+        background: var(--accent);
+        position: absolute;
+        right: 0;
+        text-align: right;
+        width: 20%;
+    }
+
+    .navbar-items.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+        padding: 0.5em;
+    }
+}
 
 header .action {
     display: block;
@@ -239,7 +270,6 @@ input[type=submit] {
 
 .nav-blog-header-list {
     width: 100%;
-    max-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -260,9 +290,13 @@ input[type=submit] {
 
 .projects {
     display: grid; /* This puts the cards in a grid, but doesn't make the images the same size. */
-    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5em;
-    padding: 2em;
+    padding: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {

@@ -58,7 +58,8 @@
 
           <!-- Navigation goes here -->
           <nav>
-              <ul>
+              <button class="menu-toggle">Menu</button>
+              <ul class="navbar-items">
                   <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
                   <li><a href="{{ url_for('home.homepage') }}">Portfolio</a></li>
                   <li><a href="{{ url_for('home.aboutpage') }}">About</a></li>
@@ -120,3 +121,14 @@
 
 
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const toggleButton = document.querySelector('.menu-toggle');
+        const navbarItems = document.querySelector('.navbar-items');
+
+        toggleButton.addEventListener('click', function() {
+            navbarItems.classList.toggle('show');
+        });
+    });
+</script>
