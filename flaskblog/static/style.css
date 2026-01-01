@@ -147,7 +147,7 @@ footer {
     margin-top: 0.25rem;
 }
 
-.post-content {
+.post-content .ql-editor {
     white-space: normal;
     font-family: var(--font-choice);
     font-size: 1.50rem;
@@ -155,6 +155,11 @@ footer {
     word-wrap: break-word;
     margin: 0 0 1.5rem 0;
     padding: 0;
+}
+
+.ql-container {
+    padding-top: 1em;
+    border: none !important;
 }
 
 .content:last-child {
