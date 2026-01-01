@@ -57,10 +57,14 @@ nav ul li {
 
 nav ul li a {
     font-weight: bold;
+    margin: 5px;
+    padding: 0.3em;
 }
 
 nav ul li a:hover {
-    
+    background-color: var(--primary);
+    color: var(--base);
+    text-decoration: none;
 }
 
 nav ul li span,
@@ -105,14 +109,21 @@ footer {
 }
 
 .action-new {
+    font-family: var(--font-choice);
+    font-size: 1rem;
     display: inline-block;
     margin: 5px; 
-    /*padding: 0.5rem;*/
+    padding: 0.5rem;
     padding: 10px 16px;
-    background-color: #181A1B;
-    color: white;
-    border-radius: 4px;
+    background-color: var(--base);
+    color: var(--primary);
     cursor: pointer;
+}
+
+.action-new:hover {
+    background-color: var(--primary);
+    color: var(--base);
+    text-decoration: none;
 }
 
 .content {
