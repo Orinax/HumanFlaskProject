@@ -127,6 +127,9 @@ footer {
     background-color: var(--base);
     color: var(--primary);
     padding: 1em;
+    border-top-color: var(--primary);
+    border-top-style: solid;
+    border-top-width: 6px;
 }
 
 .site-header {
