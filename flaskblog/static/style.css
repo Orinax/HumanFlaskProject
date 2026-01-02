@@ -360,7 +360,7 @@ input[type=submit] {
 .about p {
     font-size: 1rem;
     font-family: var(--font-choice);
-    line-height: 1.6;
+    line-height: 1.3;
 }
 
 .recent-posts .post-link-preview {
@@ -384,6 +384,10 @@ input[type=submit] {
     padding: 2rem 1rem;
     max-width: 960px;
     margin: 0 auto;
+    font-family: var(--font-choice);
+    color: var(--primary);
+    font-size: 1.25rem;
+    line-height: 1.3;
 }
 
 .about-header {
@@ -398,10 +402,16 @@ input[type=submit] {
     min-width: 300px;
 }
 
+.about-image img {
+    width: 100%;
+    max-width: 400px;
+}
+
 .about-links {
     display: flex;
     flex-direction: column;
     justify-content: left;
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
+    line-height: 1.5;
 }
