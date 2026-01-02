@@ -20,6 +20,10 @@ h1, h3 {
     margin: 1rem 0;
 }
 
+h1 a {
+    text-decoration: none;
+}
+
 a {
     color: var(--primary);
 }
@@ -88,7 +92,7 @@ nav ul li a:hover,
         position: absolute;
         right: 0;
         text-align: right;
-        width: 25%;
+        width: 200px;
         padding: 0.5rem;
         line-height: 2.3;
     }
