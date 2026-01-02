@@ -346,6 +346,7 @@ input[type=submit] {
     box-sizing: border-box;
 }
 
+/* About section of the footer for the base template, not the about page. */
 .about {
     flex: 0;
     min-width: 300px;
@@ -376,4 +377,31 @@ input[type=submit] {
     flex: 1;
     max-width: 300px;
     text-align: left;
+}
+
+/* CSS for the About page. */
+.about-page-container {
+    padding: 2rem 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.about-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    flex: 1;
+    min-width: 300px;
 }
