@@ -24,14 +24,16 @@ a {
     color: var(--primary);
 }
 
+a:hover {
+    color: var(--base);
+    background-color: var(--primary);
+    text-decoration: none;
+    padding: 0.3rem;
+}
+
 p {
     font-family: var(font-choice);
     color: var(--primary);
-}
-
-hr {
-    border: none;
-    border-top: 1px solid lightgray;
 }
 
 nav h1 {
@@ -414,4 +416,14 @@ input[type=submit] {
     flex: 1;
     min-width: 250px;
     line-height: 1.5;
+}
+
+.about-links a {
+    padding: 0.3rem;
+}
+
+.about-content {
+    margin-top: 2rem;
+    border-top: 5px solid;
+    border-top-color: var(--primary);
 }
