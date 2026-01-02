@@ -22,99 +22,99 @@
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    <body>
 </head>
-
-{#<body>#}
-
-<!-- Sidebar/menu -->
-<!--
-<nav><br>
-  <div>
-    <img src="{{ url_for('static', filename='images/chauncey.jpg') }}" style="width:45%;" class="w3-round"><br><br>
-    <h4><b>Chauncey Pelton</b></h4>
-    <p>Software Developer</p>
-  </div>
-  <div>
-    <a href="{{ url_for('home.homepage') }}">Portfolio</a> 
-    <a href="{{ url_for('home.homepage') }}#about">About</a> 
-    <a href="{{ url_for('blog.index') }}">Blog</a>
-    <a href="https://github.com/orinax" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/chauncey-pelton/" target="_blank">LinkedIn</a>
-  </div>
-</nav>
--->
-
-<!-- !PAGE CONTENT! -->
-<div>
+<body>
 
 
-  <!-- Header -->
-  <header class="site-header" id="portfolio">
-  <!--  <a href="#"><img src="{{ url_for('static', filename='images/chauncey_cropped.jpg') }}" style="width:65px;"></a> -->
-      <div class="flex-container">
-          <!-- Title here -->
-          <h1><b>Senior Junior</b></h1>
+    {#<body>#}
 
-          <!-- Navigation goes here -->
-          <nav>
-              <button class="menu-toggle">Menu</button>
-              <ul class="navbar-items">
-                  <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
-                  <li><a href="{{ url_for('home.homepage') }}">Portfolio</a></li>
-                  <li><a href="{{ url_for('home.aboutpage') }}">About</a></li>
-                  {% if g.user %}
-                      <li><a href="{{ url_for('home.aboutpage') }}">{{ g.user['username'] }}</a></li>
-                      <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
-                  {% endif %}
-              </ul>
-          </nav>
+    <!-- Sidebar/menu -->
+    <!--
+    <nav><br>
+      <div>
+        <img src="{{ url_for('static', filename='images/chauncey.jpg') }}" style="width:45%;" class="w3-round"><br><br>
+        <h4><b>Chauncey Pelton</b></h4>
+        <p>Software Developer</p>
       </div>
-  </header>
+      <div>
+        <a href="{{ url_for('home.homepage') }}">Portfolio</a> 
+        <a href="{{ url_for('home.homepage') }}#about">About</a> 
+        <a href="{{ url_for('blog.index') }}">Blog</a>
+        <a href="https://github.com/orinax" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/chauncey-pelton/" target="_blank">LinkedIn</a>
+      </div>
+    </nav>
+    -->
+
+    <!-- !PAGE CONTENT! -->
+    <div>
 
 
+      <!-- Header -->
+      <header class="site-header" id="portfolio">
+      <!--  <a href="#"><img src="{{ url_for('static', filename='images/chauncey_cropped.jpg') }}" style="width:65px;"></a> -->
+          <div class="flex-container">
+              <!-- Title here -->
+              <h1><b>Senior Junior</b></h1>
 
-        <section class="content">
-            <header>
-                {% block header %}{% endblock %}
-            </header>
-            {% for message in get_flashed_messages() %}
-                <div class="flash">{{ message }}</div>
-            {% endfor %}
-            {% block content %}{% endblock %}
-        </section>
-
-
-  <!-- Footer -->
-  <footer class="footer">
-      <div class="footer-content">
-          <div class="about">
-              <h3>ABOUT THIS BLOG</h3>
-              <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
-              <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
+              <!-- Navigation goes here -->
+              <nav>
+                  <button class="menu-toggle">Menu</button>
+                  <ul class="navbar-items">
+                      <li><a href="{{ url_for('blog.index') }}">Blog</a></li>
+                      <li><a href="{{ url_for('home.homepage') }}">Portfolio</a></li>
+                      <li><a href="{{ url_for('home.aboutpage') }}">About</a></li>
+                      {% if g.user %}
+                          <li><a href="{{ url_for('home.aboutpage') }}">{{ g.user['username'] }}</a></li>
+                          <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                      {% endif %}
+                  </ul>
+              </nav>
           </div>
-          <div class="recent-posts">
-              <h3>RECENT POSTS</h3>
-              <div class="post-link-preview">
-                  {% for post in recent_posts %} 
-                  <article class="post-link">
+      </header>
 
-                      <a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a><br>
-                      <p>{{ post['created'] }}</span></p>
-                  </article>
-                  {% endfor %}
+
+
+            <main class="content">
+                <header>
+                    {% block header %}{% endblock %}
+                </header>
+                {% for message in get_flashed_messages() %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+                {% block content %}{% endblock %}
+            </main>
+
+
+      <!-- Footer -->
+      <footer class="footer">
+          <div class="footer-content">
+              <div class="about">
+                  <h3>ABOUT THIS BLOG</h3>
+                  <p>&copy; 2025 Chauncey Pelton. All rights reserved.</p>
+                  <p>This site serves as a space to share my projects, ideas, and progress as I continue learning and building.<p>
+              </div>
+              <div class="recent-posts">
+                  <h3>RECENT POSTS</h3>
+                  <div class="post-link-preview">
+                      {% for post in recent_posts %} 
+                      <article class="post-link">
+
+                          <a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a><br>
+                          <p>{{ post['created'] }}</span></p>
+                      </article>
+                      {% endfor %}
+                  </div>
               </div>
           </div>
-      </div>
-  </footer>
+      </footer>
 
 
-<!-- End page content -->
-</div>
+    <!-- End page content -->
+    </div>
 
 </body>
 
-</div>
 {#</body>#}
 
 
@@ -124,11 +124,25 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Toggle a Menu button to display depending on screen size.
         const toggleButton = document.querySelector('.menu-toggle');
         const navbarItems = document.querySelector('.navbar-items');
 
         toggleButton.addEventListener('click', function() {
             navbarItems.classList.toggle('show');
+            event.stopPropagation();
+        });
+
+        // Make the menu close by clicking anywhere else on the page.
+        document.addEventListener('click', function() {
+            if (navbarItems.classList.contains('show')) {
+                navbarItems.classList.remove('show');
+        }
+        });
+
+        // Keep the menu open if the clicks are inside the menu
+        navbarItems.addEventListener('click', function(event) {
+            event.stopPropagation();
         });
     });
 </script>
