@@ -10,25 +10,29 @@
     <!-- Add Quill JS -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 
-    {% for post in posts %}
+    {# for post in posts #}
         <article class="post">
             <header>
                 <div>
-                    <h1><a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a></h1>
+                    <h1><a href="{{ url_for('blog.detail_view', id=posts[0]['id']) }}">{{ posts[0]['title'] }}</a></h1>
                     <div class="about">
-                        by {{ post['username'] }} on {{ post['created'].strftime('%Y-%m-%d') }}
+                        by {{ posts[0]['username'] }} on {{ posts[0]['created'].strftime('%Y-%m-%d') }}
                     </div>
                 </div>
-                {% if g.user['id'] == post['author_id'] %}
-                    <a class="action" href="{{ url_for('blog.update', id=post['id']) }}">Edit</a>
+                {% if g.user['id'] == posts[0]['author_id'] %}
+                    <a class="action" href="{{ url_for('blog.update', id=posts[0]['id']) }}">Edit</a>
                 {% endif %}
             </header>
-            <div class="post-content post-content-{{ post["id"] }}">
-                {{ post['body'] | safe }}
+            <div class="post-content post-content-{{ posts[0]["id"] }}">
+                {{ posts[0]['body'] | safe }}
             </div>
         </article>
-        {% if not loop.last %}
-        {% endif %}
+        {# if not loop.last %}
+        {% endif #}
+    {# endfor #}
+
+    {% for post in posts %}
+        <h1><a href="{{ url_for('blog.detail_view', id=post['id']) }}">{{ post['title'] }}</a></h1>
     {% endfor %}
 
   {% if total_pages > 1 %}
