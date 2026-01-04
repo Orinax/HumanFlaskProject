@@ -89,7 +89,9 @@ def index(page=1):
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC LIMIT ? OFFSET ?',
-        (per_page, offset)
+    # Changed 'per_page' to 'total_posts'
+    # This will allow to list all posts under the one most recent post.
+        (total_posts, offset)
     ).fetchall()
     
     # Convert posts to list of dictionaries and truncate the body
