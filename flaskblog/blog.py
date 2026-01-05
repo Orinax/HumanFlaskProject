@@ -73,37 +73,51 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
     return str(new_div)
 
 
-@bp.route('/')
-@bp.route('/page/<int:page>')
-def index(page=1):
+def get_all_posts():
     db = get_db()
-    per_page = 1
-    offset = (page - 1) * per_page
-
-    # First get the total number of posts for pagination
-    total_posts = db.execute('SELECT COUNT(*) FROM post').fetchone()[0]
-    total_pages = (total_posts + per_page - 1) // per_page
 
     # Get posts for current page
     posts = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC LIMIT ? OFFSET ?',
-    # Changed 'per_page' to 'total_posts'
-    # This will allow to list all posts under the one most recent post.
-        (total_posts, offset)
+        ' ORDER BY created DESC',
     ).fetchall()
     
-    # Convert posts to list of dictionaries and truncate the body
+    # Convert posts to list of dictionaries
     posts_preview = []
     for post in posts:
         post_dict = dict(post)
-        # post_dict['body'] = truncate_html(post['body'], post['id'])
         posts_preview.append(post_dict)
 
+    return posts_preview
+
+
+def get_post_titles():
+    db = get_db()
+
+    # Get posts for current page
+    posts = db.execute(
+        'SELECT p.id, title'
+        ' FROM post p'
+        ' ORDER BY created DESC',
+    ).fetchall()
     
+    # Convert posts to list of dictionaries
+    posts_preview = []
+    for post in posts:
+        post_dict = dict(post)
+        posts_preview.append(post_dict)
+
+    return posts_preview
+
+
+@bp.route('/')
+@bp.route('/page/<int:page>')
+def index(page=1):
+    posts_preview = get_all_posts()
+
     return render_template('blog/index.html', posts=posts_preview,
-                           page=page, total_pages=total_pages,)
+                           page=page,)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -152,7 +166,8 @@ def get_post(id, check_author=True):
 @bp.route('/<int:id>', methods=('GET',))
 def detail_view(id):
     post = get_post(id, check_author=False);
-    return render_template('blog/detail.html', post=post)
+    post_titles = get_post_titles()
+    return render_template('blog/detail.html', post=post, posts=post_titles,)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
