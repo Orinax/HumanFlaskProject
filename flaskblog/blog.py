@@ -72,7 +72,8 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
 
     return str(new_div)
 
-
+# TODO: Change this to get_most_recent_post.
+# Only necessary to pull all fields for the most recent post on site index.
 def get_all_posts():
     db = get_db()
 
