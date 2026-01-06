@@ -72,28 +72,45 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
 
     return str(new_div)
 
-# TODO: Change this to get_most_recent_post.
-# Only necessary to pull all fields for the most recent post on site index.
-def get_all_posts():
+def get_post(id, check_author=True):
+    '''
+    Get the entire contents of a post for the given id.
+    '''
+    post = get_db().execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' WHERE p.id = ?',
+        (id,)
+    ).fetchone()
+
+    if post is None:
+        abort(404, "Post id {id} doesn't exist.")
+
+    if check_author and post['author_id'] != g.user['id']:
+        abort(403)
+
+    return post
+
+def get_most_recent_post():
+    '''
+    Get the entire contents of the most recent post.
+    '''
     db = get_db()
 
     # Get posts for current page
-    posts = db.execute(
+    post = db.execute(
         'SELECT p.id, title, body, created, author_id, username'
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC',
-    ).fetchall()
-    
-    # Convert posts to list of dictionaries
-    posts_preview = []
-    for post in posts:
-        post_dict = dict(post)
-        posts_preview.append(post_dict)
-
-    return posts_preview
-
+    ).fetchone()
+ 
+    return post
 
 def get_post_titles():
+    '''
+    Get only the post titles for all posts ever made.
+    (This may need to be adjusted later if there are too many posts).
+    '''
     db = get_db()
 
     # Get posts for current page
@@ -102,7 +119,7 @@ def get_post_titles():
         ' FROM post p'
         ' ORDER BY created DESC',
     ).fetchall()
-    
+ 
     # Convert posts to list of dictionaries
     posts_preview = []
     for post in posts:
@@ -115,10 +132,11 @@ def get_post_titles():
 @bp.route('/')
 @bp.route('/page/<int:page>')
 def index(page=1):
-    posts_preview = get_all_posts()
+    post = get_most_recent_post()
+    post_titles = get_post_titles()
 
-    return render_template('blog/index.html', posts=posts_preview,
-                           page=page,)
+    return render_template('blog/index.html', post=post, 
+                           posts=post_titles, page=page,)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -145,23 +163,6 @@ def create():
             return redirect(url_for('blog.index'))
 
     return render_template('blog/create.html')
-
-
-def get_post(id, check_author=True):
-    post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
-        (id,)
-    ).fetchone()
-
-    if post is None:
-        abort(404, "Post id {id} doesn't exist.")
-
-    if check_author and post['author_id'] != g.user['id']:
-        abort(403)
-
-    return post
 
 
 @bp.route('/<int:id>', methods=('GET',))
