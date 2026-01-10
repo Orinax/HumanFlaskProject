@@ -72,36 +72,71 @@ def truncate_html(html_content, post_id, max_length=500, min_length=200):
 
     return str(new_div)
 
+def get_post(id, check_author=True):
+    '''
+    Get the entire contents of a post for the given id.
+    '''
+    post = get_db().execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' WHERE p.id = ?',
+        (id,)
+    ).fetchone()
+
+    if post is None:
+        abort(404, "Post id {id} doesn't exist.")
+
+    if check_author and post['author_id'] != g.user['id']:
+        abort(403)
+
+    return post
+
+def get_most_recent_post():
+    '''
+    Get the entire contents of the most recent post.
+    '''
+    db = get_db()
+
+    # Get posts for current page
+    post = db.execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'
+        ' ORDER BY created DESC',
+    ).fetchone()
+ 
+    return post
+
+def get_post_titles():
+    '''
+    Get only the post titles for all posts ever made.
+    (This may need to be adjusted later if there are too many posts).
+    '''
+    db = get_db()
+
+    # Get posts for current page
+    posts = db.execute(
+        'SELECT p.id, title'
+        ' FROM post p'
+        ' ORDER BY created DESC',
+    ).fetchall()
+ 
+    # Convert posts to list of dictionaries
+    posts_preview = []
+    for post in posts:
+        post_dict = dict(post)
+        posts_preview.append(post_dict)
+
+    return posts_preview
+
 
 @bp.route('/')
 @bp.route('/page/<int:page>')
 def index(page=1):
-    db = get_db()
-    per_page = 5
-    offset = (page - 1) * per_page
+    post = get_most_recent_post()
+    post_titles = get_post_titles()
 
-    # First get the total number of posts for pagination
-    total_posts = db.execute('SELECT COUNT(*) FROM post').fetchone()[0]
-    total_pages = (total_posts + per_page - 1) // per_page
-
-    # Get posts for current page
-    posts = db.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC LIMIT ? OFFSET ?',
-        (per_page, offset)
-    ).fetchall()
-    
-    # Convert posts to list of dictionaries and truncate the body
-    posts_preview = []
-    for post in posts:
-        post_dict = dict(post)
-        post_dict['body'] = truncate_html(post['body'], post['id'])
-        posts_preview.append(post_dict)
-
-    
-    return render_template('blog/index.html', posts=posts_preview,
-                           page=page, total_pages=total_pages,)
+    return render_template('blog/index.html', post=post, 
+                           posts=post_titles, page=page,)
 
 
 @bp.route('/create', methods=('GET', 'POST'))
@@ -130,27 +165,11 @@ def create():
     return render_template('blog/create.html')
 
 
-def get_post(id, check_author=True):
-    post = get_db().execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
-        (id,)
-    ).fetchone()
-
-    if post is None:
-        abort(404, "Post id {id} doesn't exist.")
-
-    if check_author and post['author_id'] != g.user['id']:
-        abort(403)
-
-    return post
-
-
 @bp.route('/<int:id>', methods=('GET',))
 def detail_view(id):
     post = get_post(id, check_author=False);
-    return render_template('blog/detail.html', post=post)
+    post_titles = get_post_titles()
+    return render_template('blog/detail.html', post=post, posts=post_titles,)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))

@@ -45,7 +45,7 @@ def create_app(test_config=None):
     def inject_recent_posts():
         db_conn = db.get_db()
         raw_posts = db_conn.execute(
-            'SELECT id, title, created FROM post ORDER BY created DESC LIMIT 2'
+            'SELECT id, title, created FROM post ORDER BY created DESC LIMIT 3'
         ).fetchall()
 
         formatted_posts = []
