@@ -498,7 +498,7 @@ header .action {
     border: 2px solid !important;
 }
 
-.ql-toolbar .qll-stroke {
+.ql-toolbar svg {
     fill: var(--accent) !important;
 }
 
