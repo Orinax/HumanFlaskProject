@@ -468,3 +468,49 @@ header .action {
     font-family: var(--font-choice);
     color: var(--primary);
 }
+
+/* Styling for post create page. */
+.form-general {
+    color: var(--primary);
+}
+
+.form-general label {
+    background-color: var(--base);
+}
+
+.form-general input[type="text"],
+.form-general input[type="submit"],
+#editor {
+    font-size: 1.25rem;
+    background-color: var(--base);
+    border-color: var(--primary);
+    color: var(--primary);
+    width: 50%;
+}
+
+.form-general input[type="submit"]:hover {
+    background-color: var(--primary);
+    color: var(--base);
+    text-decoration: none;
+}
+
+.ql-toolbar {
+    border: 2px dotted !important;
+    border-color: var(--accent);
+}
+
+.ql-formats button:hover {
+    background-color: var(--primary) !important;
+    color: var(--base) !important;
+}
+
+.ql-picker:hover {
+    background-color: var(--primary) !important;
+    color: var(--base) !important;
+}
+
+.ql-picker .ql-expanded {
+    background-color: var(--primary) !important;
+    color: var(--base) !important;
+}
+
