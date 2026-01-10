@@ -445,3 +445,14 @@ input[type=submit] {
     border-top: 5px solid;
     border-top-color: var(--primary);
 }
+
+.list-of-posts {
+    line-height: 1.5;
+    border-top-style: dotted;
+    border-top-color: var(--accent);
+}
+
+.list-of-posts p {
+    font-family: var(--font-choice);
+    color: var(--primary);
+}
