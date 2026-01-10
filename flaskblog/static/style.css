@@ -317,6 +317,7 @@ input[type=submit] {
 .card p {
     font-size: 1.25rem;
     font-family: var(--font-choice);
+    margin: 1rem 0;
 }
 
 /* Styling for the footer */
