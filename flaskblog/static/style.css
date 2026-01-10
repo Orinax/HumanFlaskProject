@@ -485,7 +485,6 @@ header .action {
     background-color: var(--base);
     border-color: var(--primary);
     color: var(--primary);
-    width: 50%;
 }
 
 .form-general input[type="submit"]:hover {
