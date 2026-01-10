@@ -495,8 +495,16 @@ header .action {
 }
 
 .ql-toolbar {
-    border: 2px dotted !important;
-    border-color: var(--accent);
+    border: 2px solid !important;
+}
+
+.ql-toolbar .qll-stroke {
+    fill: var(--accent) !important;
+}
+
+.ql-toolbar button:hover {
+    background-color: var(--primary) !important;
+    color: var(--base) !important;
 }
 
 .ql-formats button:hover {
@@ -509,8 +517,8 @@ header .action {
     color: var(--base) !important;
 }
 
-.ql-picker .ql-expanded {
-    background-color: var(--primary) !important;
-    color: var(--base) !important;
+.ql-toolbar .ql-picker-options {
+    background-color: var(--base) !important;
+    color: var(--primary) !important;
 }
 
