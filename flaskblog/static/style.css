@@ -183,6 +183,16 @@ footer {
     padding: 0;
 }
 
+.post-quote {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.post-quote p {
+    color: var(--accent);
+    width: 100%;
+}
+
 .post-content .ql-editor {
     white-space: pre-line;
     font-family: var(--font-choice);
@@ -191,6 +201,13 @@ footer {
     word-wrap: break-word;
     margin: 0 0 1.5rem 0;
     padding: 0;
+}
+
+.post-content ol,
+.post-content ul,
+.post-content li {
+    color: var(--primary);
+    font-family: var(--font-choice);
 }
 
 .ql-container {

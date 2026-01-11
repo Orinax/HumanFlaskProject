@@ -2,31 +2,79 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="about-header">
+        <h1>What is Senior Junior?</h1>
+
+
+    </div>
+        <div class="post-content">
+            <p>Senior Junior is a website that has been created to help express the following idea:</p>
+            <br>
+            <div class="post-quote">
+                <p><i>So much focus is placed on speed and money these days.
+                Instead of going that route, the focus here will be on learning and understanding.
+                While my age matches that of other senior developers, my experience matches that of junior developers.
+                To grow from junior to senior will take time, but I plan to enjoy learning and gaining new understanding during that time.
+                It would be easy to move fast with the help of AI, and churn out project after project to help land a job, 
+                but slow and steady is how I will proceed for now.</i></p>
+            </div>
+            <br>
+            <p>If you stick around and read the blog, I'll share what I do to learn, and highlight what I find fun and fascinating as a developer. 
+            As I progress, I will collect all my work and projects below. Feel free to have a look around.</p>
+        </div>
+    <div class="list-of-posts">
+    </div>
   <!-- Grid of Projects-->
     <section class="projects">
         <div class="card">
             <h3><b><a href="https://github.com/Orinax/CommandLineRail" target="_blank">Command Line Rail</a></b></h3>
             <p>An idle command line game that allows players to watch trains travel and transport people on the command line.</p>
+            <p>I choose to showcase this project because it is all me. 
+            I put this together during the summer of 2024 and I had a blast piecing together my text based ideas for this train simulator.</p>
+            <p>This project also represents the first time the ideas of OOP truly started to make sense for me, 
+            and I am particularly proud of the end product because AI did not help me at all. 
+            I used the Python skills I already had, and once combined with some documentation reading, 
+            I was able to transfer my ideas from my mind to the command line.</p>
             <img src="{{ url_for('static', filename='images/clr.png') }}" alt="Trains" style="width:100%">
         </div>
         <div class="card">
             <h3><b><a href="https://github.com/Orinax/Snake-Game-using-Python-Curses" target="_blank">Snake</a></b></h3>
-            <p>A version of the classic Snake game, written with Python and Curses. Not my own design, but when I came across it on GitHub it was broken. I was able to get it into a working state.</p>
+            <p>A version of the classic Snake game, written with Python and Curses. Not my own design, but when I came across it on GitHub it was broken. 
+            I was able to get it into a working state.</p>
+            <p>With this project dating back to 2020, it's definitely not a recent representation of my work, 
+            but this is the first time I forked a project from someone else, and it is a reminder for me 
+            that with enough effort, something that is broken and not working can be fixed up and given new life.</p>
             <img src="{{ url_for('static', filename='images/snake.png') }}" alt="Snake" style="width:100%">
         </div>
         <div class="card">
             <h3><b><a href="https://github.com/Security-International-Group/HARDN" target="_blank">Project HARDN</a></b></h3>
-            <p>A project focused on security and system hardening for Debian and Ubuntu based distributions. This is the first Open Source Project I joined and began contributing to.</p>
+            <p>A project focused on security and system hardening for Debian and Ubuntu based distributions. 
+            This is the first Open Source Project I joined and began contributing to.</p>
+            <p>This project definitely has to be a part of my portfolio because I have learned so much 
+            from the other developers working on Porject HARDN. The time I've spent on this project 
+            has helped me realize that there is so much more to being a software developer than writing code, 
+            and this is the first time I've been able to experience the Software Development Life Cycle first hand.</p>
             <img src="{{ url_for('static', filename='images/hardn.jpeg') }}" alt="Project HARDN" style="width:100%">
         </div>
         <div class="card">
             <h3><b>Project Waterfall Scheduler</b></h3>
-            <p>This program allows a Google Workspace Administrator to create thousands of events across multiple calendars with a single command. Currently a command line program, I am working with a partner to upgrade this to a fleshed out web app.</p>
+            <p>This program allows a Google Workspace Administrator to create thousands of events across multiple calendars with a single command. 
+            Currently a command line program, I am working with a partner to upgrade this to a fleshed out web app.</p>
+            <p>I would link to the source code for this project if I could, but every developer has one of those projects don't they? 
+            A project that they hope to one day push to a marketable state. For me, this is that project.</p>
+            <p>Work began back in 2022, but there continues to be progress even today. We'll get there one day.
+            Slow and steady wins the race.</p>
             <img src="{{ url_for('static', filename='images/waterfall_scheduler.png') }}" alt="Project Waterfall Scheduler" style="width:100%">
         </div>
         <div class="card">
             <h3><b><a href="https://github.com/Orinax/HumanFlaskProject" target="_blank">Flask Web Blog & Portfolio</a></b></h3>
-            <p>Instead of using a premade website maker I used Flask to put this site together. It showcases my learning journey and my personal projects.</p>
+            <p>Instead of using a premade website maker I used Flask to put this site together. 
+            It showcases my learning journey and my personal projects.</p>
+            <p>I was so close to scrapping this site altogether, but I am glad that I did not. 
+            Sticking with it and pushing it through my distaste for HTML and CSS has helped me learn so much. 
+            I am finally comfortable with those languages now, and my understanding of routes and how this site connects 
+            to a database has grown to the point where I am no longer confused about how all that works.</p>
+            <p>If nothing else, this project will help remind me that sticking with it can lead to big pay-outs later on.</p>
             <img src="{{ url_for('static', filename='images/flasklogo.jpg') }}" alt="Flask Logo" style="width:100%">
         </div>
     <section>
