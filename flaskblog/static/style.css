@@ -203,6 +203,13 @@ footer {
     padding: 0;
 }
 
+.post-content ol,
+.post-content ul,
+.post-content li {
+    color: var(--primary);
+    font-family: var(--font-choice);
+}
+
 .ql-container {
     padding-top: 1em;
     border: none !important;
